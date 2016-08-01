@@ -1,0 +1,9 @@
+trello:
+  appkey: 
+  token: 
+  board: 
+slack:
+  token: xoxb-
+  channel: C
+  message: 'test'
+
