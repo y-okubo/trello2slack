@@ -61,7 +61,13 @@ func sendSlackMessage(msg string) {
 	slackMessage := viper.GetString("slack.message")
 
 	msg = slackMessage + "\n\n" + msg
-	fmt.Println(msg)
+
 	api := slack.New(slackToken)
-	api.PostMessage(slackChannel, msg, slack.PostMessageParameters{})
+
+	// 必ずボットをチャンネルに招待すること
+	params := slack.PostMessageParameters{}
+	params.AsUser = true
+	params.LinkNames = 1
+
+	api.PostMessage(slackChannel, msg, params)
 }
